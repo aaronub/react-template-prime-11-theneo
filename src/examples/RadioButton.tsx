@@ -1,7 +1,8 @@
 
 import React, { useState } from "react";
 import { RadioButton } from "primereact/radiobutton";
-import type { RadioButtonChangeEvent } from "primereact/radiobutton";
+import { RadioButtonGroup } from 'primereact/radiobutton/group';
+import type { RadioButtonGroupValueChangeEvent } from '@primereact/types/shared/radiobutton';
 
 interface Category {
     name: string;
@@ -21,39 +22,37 @@ export default function RadioButtonDemo() {
     return (
         <div >
             {/* Group
-            RadioButton is used as a controlled input with value, checked and onChange properties. */}
-            <div className="flex flex-wrap gap-3">
-                <div className="flex items-center">
-                    <RadioButton inputId="ingredient1" name="pizza" value="Cheese" onChange={(e: RadioButtonChangeEvent) => setIngredient(e.value)} checked={ingredient === 'Cheese'} />
-                    <label htmlFor="ingredient1" className="ml-2">Cheese</label>
+            Use the RadioButton.Group component with value and onValueChange props to control the selected state of radio buttons. */}
+            <RadioButton.Group className="flex flex-wrap gap-4" value={ingredient} onValueChange={(e: RadioButtonGroupValueChangeEvent) => setIngredient(e.value as string)}>
+                <div className="flex items-center gap-2">
+                    <RadioButton inputId="ingredient1" name="pizza" value="cheese" />
+                    <label htmlFor="ingredient1">Cheese</label>
                 </div>
-                <div className="flex items-center">
-                    <RadioButton inputId="ingredient2" name="pizza" value="Mushroom" onChange={(e: RadioButtonChangeEvent) => setIngredient(e.value)} checked={ingredient === 'Mushroom'} />
-                    <label htmlFor="ingredient2" className="ml-2">Mushroom</label>
+                <div className="flex items-center gap-2">
+                    <RadioButton inputId="ingredient2" name="pizza" value="mushroom" />
+                    <label htmlFor="ingredient2">Mushroom</label>
                 </div>
-                <div className="flex items-center">
-                    <RadioButton inputId="ingredient3" name="pizza" value="Pepper" onChange={(e: RadioButtonChangeEvent) => setIngredient(e.value)} checked={ingredient === 'Pepper'} />
-                    <label htmlFor="ingredient3" className="ml-2">Pepper</label>
+                <div className="flex items-center gap-2">
+                    <RadioButton inputId="ingredient3" name="pizza" value="pepper" />
+                    <label htmlFor="ingredient3">Pepper</label>
                 </div>
-                <div className="flex items-center">
-                    <RadioButton inputId="ingredient4" name="pizza" value="Onion" onChange={(e: RadioButtonChangeEvent) => setIngredient(e.value)} checked={ingredient === 'Onion'} />
-                    <label htmlFor="ingredient4" className="ml-2">Onion</label>
+                <div className="flex items-center gap-2">
+                    <RadioButton inputId="ingredient4" name="pizza" value="onion" />
+                    <label htmlFor="ingredient4">Onion</label>
                 </div>
-            </div>
+            </RadioButton.Group>
 
 
             {/* Dynamic
             RadioButtons can be generated using a list of values. */}
-            <div className="flex flex-column gap-3">
-                {categories.map((category) => {
-                    return (
-                        <div key={category.key} className="flex items-center">
-                            <RadioButton inputId={category.key} name="category" value={category} onChange={(e: RadioButtonChangeEvent) => setSelectedCategory(e.value)} checked={selectedCategory.key === category.key} />
-                            <label htmlFor={category.key} className="ml-2">{category.name}</label>
-                        </div>
-                    );
-                })}
-            </div>
+            <RadioButtonGroup className="flex flex-wrap gap-4" value={ingredient} onValueChange={(e: RadioButtonGroupValueChangeEvent) => setIngredient(e.value as string)}>
+                {categories.map((item) => (
+                    <div key={item.key} className="flex items-center gap-2">
+                        <RadioButton inputId={item.key} name="category" value={item.key} />
+                        <label htmlFor={item.key}>{item.name}</label>
+                    </div>
+                ))}
+            </RadioButtonGroup>
 
             {/* Invalid
             Invalid state is displayed using the invalid prop to indicate a failed validation. You can use this style when integrating with form validation libraries. */}
@@ -62,7 +61,10 @@ export default function RadioButtonDemo() {
 
             {/* Disabled
             When disabled is present, the element cannot be edited and focused. */}
-            <RadioButton checked disabled></RadioButton>
+            <RadioButton.Group className="flex items-center gap-2" value="2">
+                <RadioButton disabled />
+                <RadioButton value="2" disabled />
+            </RadioButton.Group>
 
         </div>
     );

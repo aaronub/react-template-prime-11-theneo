@@ -1,67 +1,157 @@
 
 import React, { useRef } from 'react';
+import type { ToastRegionInstance, ToastType } from '@primereact/types/shared/toast';
 import { Button } from 'primereact/button';
-import { Toast } from 'primereact/toast';
+import { toast, Toast } from 'primereact/toast';
+
+
+function BasicToast() {
+    return (
+        <Toast>
+            <Toast.Portal>
+                <Toast.Region>
+                    {({ toast }: ToastRegionInstance) =>
+                        toast?.toasts.map((toast: ToastType) => (
+                            <Toast.Item key={toast.id} data={toast}>
+                                <div className="flex items-start gap-2">
+                                    <Toast.Icon />
+                                    <div className="flex-1">
+                                        <Toast.Title className="mb-1 -mt-0.5" />
+                                        <Toast.Description />
+                                        <Toast.Action as={Button} size="small" className="mt-4" />
+                                    </div>
+                                </div>
+                                <Toast.Close as={Button} iconOnly severity={'secondary'} variant="text" size="small" className={'absolute top-2 right-2'}>
+                                    <i className="pi pi-times"></i>
+                                </Toast.Close>
+                            </Toast.Item>
+                        ))
+                    }
+                </Toast.Region>
+            </Toast.Portal>
+        </Toast>
+    );
+}
+function PositionToast({ position = 'bottom-right' }: { position: 'top-left' | 'top-right' | 'top-center' | 'bottom-left' | 'bottom-right' | 'bottom-center' }) {
+    return (
+        <Toast position={position} group={position}>
+            <Toast.Portal>
+                <Toast.Region>
+                    {({ toast }: ToastRegionInstance) =>
+                        toast?.toasts.map((toast: ToastType) => (
+                            <Toast.Item key={toast.id} data={toast}>
+                                <div className="flex items-start gap-2">
+                                    <Toast.Icon />
+                                    <div className="flex-1">
+                                        <Toast.Title className="mb-1 -mt-0.5" />
+                                        <Toast.Description />
+                                        <Toast.Action as={Button} size="small" className="mt-4" />
+                                    </div>
+                                </div>
+                                <Toast.Close as={Button} iconOnly severity={'secondary'} variant="text" size="small" className={'absolute top-2 right-2'}>
+                                    <i className="pi pi-times"></i>
+                                </Toast.Close>
+                            </Toast.Item>
+                        ))
+                    }
+                </Toast.Region>
+            </Toast.Portal>
+        </Toast>
+    );
+}
+function RichColorsToast() {
+    return (
+        <Toast richColors group="rich-colors">
+            <Toast.Portal>
+                <Toast.Region>
+                    {({ toast }: ToastRegionInstance) =>
+                        toast?.toasts.map((toastItem: ToastType) => (
+                            <Toast.Item key={toastItem.id} data={toastItem}>
+                                <div className="flex items-start gap-2">
+                                    <Toast.Icon />
+                                    <div className="flex-1">
+                                        <Toast.Title className="mb-1 -mt-0.5" />
+                                        <Toast.Description />
+                                        <Toast.Action as={Button} size="small" className="mt-4" />
+                                    </div>
+                                </div>
+                                <Toast.Close as={Button} iconOnly severity={toastItem.variant ?? 'secondary'} variant="text" size="small" className={'absolute top-2 right-2'}>
+                                    <i className="pi pi-times"></i>
+                                </Toast.Close>
+                            </Toast.Item>
+                        ))
+                    }
+                </Toast.Region>
+            </Toast.Portal>
+        </Toast>
+    );
+}
+
+
 
 export default function ToastDemo() {
-    const toast = useRef<Toast>(null);
-
-    const showSuccess = () => {
-        toast.current?.show({severity:'success', summary: 'Success', detail:'Message Content', life: 3000});
-    }
-
-    const showInfo = () => {
-        toast.current?.show({severity:'info', summary: 'Info', detail:'Message Content', life: 3000});
-    }
-
-    const showWarn = () => {
-        toast.current?.show({severity:'warn', summary: 'Warning', detail:'Message Content', life: 3000});
-    }
-
-    const showError = () => {
-        toast.current?.show({severity:'error', summary: 'Error', detail:'Message Content', life: 3000});
-    }
-
-    const showSecondary = () => {
-        toast.current?.show({ severity: 'secondary', summary: 'Secondary', detail: 'Message Content', life: 3000 });
+    const createToast = (group: string) => {
+        toast({
+            title: 'Changes saved',
+            description: 'Are you sure you would like to remove this user? This action cannot be undone.',
+            group
+        });
     };
-
-    const showContrast = () => {
-        toast.current?.show({ severity: 'contrast', summary: 'Contrast', detail: 'Message Content', life: 3000 });
-    };
-
-    const toast2 = useRef<Toast>(null);
-
-    const showSticky = () => {
-        toast2.current?.show({ severity: 'info', summary: 'Sticky', detail: 'Message Content', sticky: true });
-    };
-
-    const clear = () => {
-        toast2.current?.clear();
-    };
-
 
     return (
         <div>
-            {/* Severity
-            The severity option specifies the type of the message. */}
-            <Toast ref={toast} />
-            <div className="flex flex-wrap gap-2">
-                <Button label="Success" severity="success" onClick={showSuccess} />
-                <Button label="Info" severity="info" onClick={showInfo} />
-                <Button label="Warn" severity="warning" onClick={showWarn} />
-                <Button label="Error" severity="danger" onClick={showError} />
-                <Button label="Secondary" severity="secondary" onClick={showSecondary} />
-                <Button label="Contrast" severity="contrast" onClick={showContrast} />
-            </div>
+            {/* Basic
+            Use toast function to create a toast. */}
+            <Button onClick={() => toast({ title: 'Changes saved', description: 'Are you sure you would like to remove this user? This action cannot be undone.'})} variant="outlined">
+                Create toast
+            </Button>
+            <BasicToast />
 
-            {/* Sticky
-            A message will disappear after 3000ms, the default value defined for the life option. To display messages that remain visible and do not hide automatically, set the sticky option to "true". */}
-            <Toast ref={toast2} />
-            <div className="flex flex-wrap gap-2">
-                <Button onClick={showSticky} label="Sticky" severity="success" />
-                <Button onClick={clear} label="Clear" />
-            </div>
+
+            {/* Position
+            Use position prop to change the position of the toast */}
+            <Button onClick={() => createToast('top-left')} variant="outlined">
+                Top Left
+            </Button>
+            <Button onClick={() => createToast('top-center')} variant="outlined">
+                Top Center
+            </Button>
+            <Button onClick={() => createToast('top-right')} variant="outlined">
+                Top Right
+            </Button>
+            <Button onClick={() => createToast('bottom-left')} variant="outlined">
+                Bottom Left
+            </Button>
+            <Button onClick={() => createToast('bottom-center')} variant="outlined">
+                Bottom Center
+            </Button>
+            <Button onClick={() => createToast('bottom-right')} variant="outlined">
+                Bottom Right
+            </Button>
+            <PositionToast position="top-left" />
+            <PositionToast position="top-right" />
+            <PositionToast position="top-center" />
+            <PositionToast position="bottom-left" />
+            <PositionToast position="bottom-right" />
+            <PositionToast position="bottom-center" />
+
+
+            {/* Rich Colors
+            Use richColors prop to enable rich colors for the toast. */}
+            <Button variant="outlined" severity="info" onClick={() => toast.info({ title: 'Info', description: 'This is an info toast', group: 'rich-colors' })}>
+                Info
+            </Button>
+            <Button variant="outlined" severity="success" onClick={() => toast.success({ title: 'Success', description: 'This is a success toast', group: 'rich-colors' })}>
+                Success
+            </Button>
+            <Button variant="outlined" severity="danger" onClick={() => toast.danger({ title: 'Error', description: 'This is an error toast', group: 'rich-colors' })}>
+                Danger
+            </Button>
+            <Button variant="outlined" severity="warn" onClick={() => toast.warn({ title: 'Warning', description: 'This is a warning toast', group: 'rich-colors' })}>
+                Warn
+            </Button>
+            <RichColorsToast />
+            
         </div>
     )
 }

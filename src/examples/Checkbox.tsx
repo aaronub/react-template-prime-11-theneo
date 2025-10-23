@@ -1,60 +1,51 @@
 
 import React, { useState } from "react";
 import { Checkbox } from "primereact/checkbox";
-import type { CheckboxChangeEvent } from "primereact/checkbox";
-
-interface Category {
-    name: string; 
-    key: string;
-}
+import type { CheckboxGroupValueChangeEvent } from '@primereact/types/shared/checkbox';
 
 export default function CheckboxDemo() {
-    const [checked, setChecked] = useState<boolean>(false);
-
-    const categories: Category[] = [
+    const [value, setValue] = React.useState<string[]>([]);
+    const categories = [
         { name: 'Accounting', key: 'A' },
         { name: 'Marketing', key: 'M' },
         { name: 'Production', key: 'P' },
         { name: 'Research', key: 'R' }
     ];
-    const [selectedCategories, setSelectedCategories] = useState<Category[]>([categories[1]]);
 
-    const onCategoryChange = (e: CheckboxChangeEvent) => {
-        let _selectedCategories = [...selectedCategories];
-
-        if (e.checked)
-            _selectedCategories.push(e.value);
-        else
-            _selectedCategories = _selectedCategories.filter(category => category.key !== e.value.key);
-
-        setSelectedCategories(_selectedCategories);
-    };
 
     return (
         <div>
-            {/* Basic
-            Checkbox is used as a controlled input with checked and onChange properties. */}
-            <Checkbox onChange={e => setChecked(e.checked || false)} checked={checked}></Checkbox>
+            {/* Basic */}
+            <div className="flex items-center gap-2">
+                <Checkbox inputId="basic-checkbox" />
+                <label htmlFor="basic-checkbox">
+                    I accept the <a className="font-semibold">Terms of Service</a>
+                </label>
+            </div>
 
             {/* Dynamic
             Checkboxes can be generated using a list of values. */}
-            {categories.map((category) => {
-                return (
-                    <div key={category.key} className="flex items-center">
-                        <Checkbox inputId={category.key} name="category" value={category} onChange={onCategoryChange} checked={selectedCategories.some((item) => item.key === category.key)} />
-                        <label htmlFor={category.key} className="ml-2">{category.name}</label>
+            <Checkbox.Group value={value} onValueChange={(e: CheckboxGroupValueChangeEvent) => setValue(e.value as string[])} className="flex-col gap-4">
+                {categories.map((category) => (
+                    <div key={category.key} className="flex items-center gap-2">
+                        <Checkbox inputId={category.key} value={category.key} />
+                        <label htmlFor={category.key}>{category.name}</label>
                     </div>
-                );
-            })}
+                ))}
+            </Checkbox.Group>
         
         
             {/* Invalid
-            Invalid state is displayed using the invalid prop to indicate a failed validation. You can use this style when integrating with form validation libraries. */}
-            <Checkbox invalid={!checked} onChange={(e) => setChecked(e.checked || false)} checked={checked}></Checkbox>
+            Specify the invalid property to display the component with a red border. */}
+            <Checkbox inputId="invalid" invalid />
+            <label htmlFor="invalid" className="text-red-500 dark:text-red-400">
+                Invalid
+            </label>
 
             {/* Disabled
-            When disabled is present, the element cannot be edited and focused. */}
-            <Checkbox checked disabled></Checkbox>
+            Use the disabled property to disable a checkbox. */}
+            <Checkbox inputId="disabled" disabled />
+            <Checkbox inputId="disabled" disabled checked />
         
         </div>
     )

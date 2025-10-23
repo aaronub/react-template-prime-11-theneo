@@ -1,22 +1,20 @@
 
 import React, { useState } from "react";
 import { InputText } from "primereact/inputtext";
-import { FloatLabel } from "primereact/floatlabel";
 
 export default function InputTextDemo() {
     const [value, setValue] = useState<string>('');
 
     return (
         <div>
-            {/* Basic
-            InputText is used as a controlled input with value and onChange properties. */}
-            <InputText value={value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)} />
+            {/* Basic */}
+            <InputText placeholder="Enter text" value={value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}/>
 
             {/* Sizes
-            Apply .p-inputtext-sm to reduce the size of the input element or .p-inputtext-lg to enlarge it. */}
-            <InputText type="text" className="p-inputtext-sm" placeholder="Small" />
-            <InputText type="text" placeholder="Normal" />
-            <InputText type="text" className="p-inputtext-lg" placeholder="Large" />
+            InputText provides small and large sizes as alternatives to the base by setting the size property. */}
+            <InputText size="small" placeholder="Small" />
+            <InputText placeholder="Normal" />
+            <InputText size="large" placeholder="Large" />
 
 
             {/* Help Text
@@ -29,18 +27,9 @@ export default function InputTextDemo() {
                 </small>
             </div>
 
-
-            {/* Float Label
-            A floating label appears on top of the input field when focused. Visit FloatLabel documentation for more information. */}
-            <FloatLabel>
-                <InputText id="username" value={value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)} />
-                <label htmlFor="username">Username</label>
-            </FloatLabel>
-
-
             {/* Invalid
             Invalid state is displayed using the invalid prop to indicate a failed validation. You can use this style when integrating with form validation libraries. */}
-            <InputText invalid />
+            <InputText value={value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)} placeholder="Enter text" invalid={value === ''} />
 
             {/* Disabled
             When disabled is present, the element cannot be edited and focused. */}

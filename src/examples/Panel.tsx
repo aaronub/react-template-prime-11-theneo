@@ -1,98 +1,96 @@
 
 import React, { useRef } from 'react'; 
-import { Panel, type PanelFooterTemplateOptions, type PanelHeaderTemplateOptions } from 'primereact/panel';
+import { Motion } from '@primereact/core/motion';
+import { MinusIcon, PlusIcon } from '@primereact/icons';
+import { Panel } from 'primereact/panel';
 import { Button } from 'primereact/button';
 import { Avatar } from 'primereact/avatar';
-import { Menu } from 'primereact/menu';
 
 export default function PanelDemo() {
-    const ref = useRef<Panel>(null);
-    
-    const configMenu = useRef<Menu>(null);
-    const items = [
-        {
-            label: 'Refresh',
-            icon: 'pi pi-refresh'
-        },
-        {
-            label: 'Search',
-            icon: 'pi pi-search'
-        },
-        {
-            separator: true
-        },
-        {
-            label: 'Delete',
-            icon: 'pi pi-times'
-        }
-    ];
-
-    const headerTemplate = (options: PanelHeaderTemplateOptions) => {
-        const className = `${options.className} flex justify-between`;
-
-        return (
-            <div className={className}>
-                <div className="flex items-center gap-2">
-                    <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png" size="large" shape="circle" />
-                    <span className="font-bold">Amy Elsner</span>
-                </div>
-                <div>
-                    <Menu model={items} popup ref={configMenu} id="config_menu" />
-                    <button className="p-panel-header-icon p-link mr-2" onClick={(e) => configMenu?.current?.toggle(e)}>
-                        <span className="pi pi-cog"></span>
-                    </button>
-                    {options.togglerElement}
-                </div>
-            </div>
-        );
-    };
-
-    const footerTemplate = (options: PanelFooterTemplateOptions) => {
-        const className = `${options.className} flex flex-wrap items-center justify-between gap-3`;
-
-        return (
-            <div className={className}>
-                <div className="flex items-center gap-2">
-                    <Button icon="pi pi-user" rounded text></Button>
-                    <Button icon="pi pi-bookmark" severity="secondary" rounded text></Button>
-                </div>
-                <span className="p-text-secondary">Updated 2 hours ago</span>
-            </div>
-        );
-    };
+    const [show, setShow] = React.useState(true);
 
     return (
         <div>
             {/* Basic
-            A simple Panel is created with a header property along with the content as children. */}
-            <Panel header="Header">
-                <p className="m-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
+            Panel is a container component with a Panel.Header and Panel.Content. */}
+            <Panel>
+                <Panel.Header>Header</Panel.Header>
+                <Panel.Content>
+                    <p className="m-0">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </Panel.Content>
             </Panel>
 
             {/* Toggleable
-            Content of the panel can be expanded and collapsed when toggleable option is enabled. A toggleable panel can either be used as a Controlled or Uncontrolled component. In controlled mode a binding to collapsed property along with onToggle event are needed to manage the content state. */}
-            <Button label="Toggle" className="m-2" onClick={(e) => ref.current?.toggle(e)} />
-            <Button label="Expand" className="m-2" onClick={(e) => ref.current?.expand(e)} />
-            <Button label="Collapse" className="m-2" onClick={(e) => ref.current?.collapse(e)} />
-            <Panel ref={ref} header="Header" toggleable>
-                <p className="m-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                </p>
+            Panel can be made toggleable by using the Motion component or an animation library to animate the visibility of the content. The Panel.Header contains a button to toggle the visibility of the content, and the Panel.Content is wrapped inside the Motion component to handle the animation. */}
+            <Panel>
+                <Panel.Header>
+                    <Panel.Title>Header</Panel.Title>
+                    <Panel.HeaderActions>
+                        <Button onClick={() => setShow((prev) => !prev)} rounded variant="text" iconOnly>
+                            {show ? <MinusIcon /> : <PlusIcon />}
+                        </Button>
+                    </Panel.HeaderActions>
+                </Panel.Header>
+                <Motion in={show} name="p-toggleable-content">
+                    <Panel.Content>
+                        <p className="m-0">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                            laborum.
+                        </p>
+                    </Panel.Content>
+ 
+                    <Panel.Footer>
+                        <p className="m-0">Footer</p>
+                    </Panel.Footer>
+                </Motion>
             </Panel>
 
             {/* Template
-            Title section is customized with the headerTemplate property that takes a PanelHeaderTemplateOptions object as a parameter and returns content. */}
-            <Panel headerTemplate={headerTemplate} footerTemplate={footerTemplate} toggleable>
-                <p className="m-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
+            Header and footer sections of the panel can be customized using Panel.Header and Panel.Footer components. */}
+            <Panel toggleable>
+                <Panel.Header>
+                    <Panel.Title>
+                        <div className="flex items-center gap-2">
+                            <Avatar shape="circle">
+                                <Avatar.Image src="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" />
+                                <Avatar.Fallback>A</Avatar.Fallback>
+                            </Avatar>
+                            <span className="font-bold">Amy Elsner</span>
+                        </div>
+                    </Panel.Title>
+                    <Panel.HeaderActions>
+                        <Button severity="secondary" rounded variant="text" iconOnly>
+                            <i className="pi pi-cog" />
+                        </Button>
+                        <Button onClick={() => setShow((prev) => !prev)} rounded variant="text" iconOnly>
+                            {show ? <MinusIcon /> : <PlusIcon />}
+                        </Button>
+                    </Panel.HeaderActions>
+                </Panel.Header>
+                <Motion in={show} name="p-toggleable-content">
+                    <Panel.Content>
+                        <p className="m-0">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                            laborum.
+                        </p>
+                        <div className="flex flex-wrap items-center justify-between gap-4">
+                            <div className="flex items-center gap-2">
+                                <Button iconOnly rounded variant="text">
+                                    <i className="pi pi-user" />
+                                </Button>
+                                <Button severity="secondary" iconOnly rounded variant="text">
+                                    <i className="pi pi-bookmark" />
+                                </Button>
+                            </div>
+                            <span className="text-surface-500 dark:text-surface-400">Updated 2 hours ago</span>
+                        </div>
+                    </Panel.Content>
+                </Motion>
             </Panel>
             
         </div>

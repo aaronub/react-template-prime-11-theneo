@@ -2,74 +2,84 @@
 import React from 'react'; 
 import { Avatar } from 'primereact/avatar';
 import { Badge } from 'primereact/badge';
+import { CheckIcon } from '@primereact/icons';
 
 export default function AvatarDemo() {
     return (
         <div>
-            {/* Label
-            A label is displayed as the avatar content. */}
-            <div className="flex-auto">
-                <h5>Label</h5>
-                <Avatar label="P" className="mr-2" size="xlarge" />
-                <Avatar label="V" className="mr-2" size="large" style={{ backgroundColor: '#2196F3', color: '#ffffff' }} />
-                <Avatar label="U" style={{ backgroundColor: '#9c27b0', color: '#ffffff' }} />
-            </div>
-            <div className="flex-auto">
-                <h5>Circle</h5>
-                <Avatar label="P" className="mr-2" size="xlarge" shape="circle" />
-                <Avatar label="V" className="mr-2" size="large" style={{ backgroundColor: '#2196F3', color: '#ffffff' }} shape="circle" />
-                <Avatar label="U" style={{ backgroundColor: '#9c27b0', color: '#ffffff' }} shape="circle" />
-            </div>
-            <div className="flex-auto">
-                <h5>Badge</h5>
-                <Avatar label="U" size="xlarge" className="p-overlay-badge">
-                    <Badge value="4" />
-                </Avatar>
-            </div>
+            {/* Fallback
+            The Avatar.Fallback component displays a label or an icon when an image fails to load or when an image is not preferred. */}
+            <Avatar>
+                <Avatar.Fallback>J</Avatar.Fallback>
+            </Avatar>
+            <Avatar className="bg-amber-100 dark:bg-amber-950/50 text-amber-500 dark:text-amber-500">
+                <Avatar.Fallback>CC</Avatar.Fallback>
+            </Avatar>
+            <Avatar>
+                <Avatar.Fallback>
+                    <CheckIcon className="size-4" />
+                </Avatar.Fallback>
+            </Avatar>
+            <Avatar className="bg-blue-100 dark:bg-blue-950/50 text-blue-500 dark:text-blue-500">
+                <Avatar.Fallback>
+                    <i className="pi pi-user" />
+                </Avatar.Fallback>
+            </Avatar>
 
-            {/* Icon
-            A font icon is displayed as an Avatar with the icon property. */}
-            <div className="flex flex-wrap gap-5">
-                <div className="flex-auto">
-                    <h5>Icon</h5>
-                    <Avatar icon="pi pi-user" className="mr-2" size="xlarge" />
-                    <Avatar icon="pi pi-user" className="mr-2" size="large" style={{ backgroundColor: '#2196F3', color: '#ffffff' }} />
-                    <Avatar icon="pi pi-user" style={{ backgroundColor: '#9c27b0', color: '#ffffff' }} />
-                </div>
-                <div className="flex-auto">
-                    <h5>Circle</h5>
-                    <Avatar icon="pi pi-user" className="mr-2" size="xlarge" shape="circle" />
-                    <Avatar icon="pi pi-user" className="mr-2" size="large" style={{ backgroundColor: '#2196F3', color: '#ffffff' }} shape="circle" />
-                    <Avatar icon="pi pi-user" style={{ backgroundColor: '#9c27b0', color: '#ffffff' }} shape="circle" />
-                </div>
-                <div className="flex-auto">
-                    <h5>Badge</h5>
-                    <Avatar className="p-overlay-badge" icon="pi pi-user" size="xlarge">
-                        <Badge value="4" />
-                    </Avatar>
-                </div>
-            </div>
 
             {/* Image
-            Use the image property to display an image as an Avatar. */}
-            <div className="flex flex-wrap gap-5">
-                <div className="flex-auto">
-                    <h5>Image</h5>
-                    <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png" className="mr-2" size="xlarge" shape="circle" />
-                    <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/asiyajavayant.png" className="mr-2" size="large" shape="circle" />
-                    <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/onyamalimba.png" shape="circle" />
-                </div>
-                <div className="flex-auto">
-                    <h5>Badge</h5>
-                    <Avatar className="p-overlay-badge" image="https://primefaces.org/cdn/primereact/images/organization/walter.jpg" size="xlarge">
-                        <Badge value="4" severity="danger" />
-                    </Avatar>
-                </div>
-                <div className="flex-auto">
-                    <h5>Gravatar</h5>
-                    <Avatar image={"https://www.gravatar.com/avatar/05dfd4b41340d09cae045235eb0893c3?d=mp"} className="flex align-items-center justify-content-center mr-2" size="xlarge" />
-                </div>
-            </div>
+            The Avatar.Image component displays an image as an Avatar. */}
+            <Avatar size="large" shape="circle">
+                <Avatar.Image src="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" />
+                <Avatar.Fallback>A</Avatar.Fallback>
+            </Avatar>
+
+
+            {/* Badge
+            Badge component can be used to display a badge on an Avatar. */}
+            <Badge.Overlay>
+                <Avatar size="large" shape="circle">
+                    <Avatar.Image src="https://primefaces.org/cdn/primevue/images/avatar/onyamalimba.png" />
+                    <Avatar.Fallback>O</Avatar.Fallback>
+                </Avatar>
+                <Badge size="small" shape="circle" severity="success">
+                    2
+                </Badge>
+            </Badge.Overlay>
+            <Badge.Overlay>
+                <Avatar size="large">
+                    <Avatar.Image src="https://primefaces.org/cdn/primevue/images/organization/walter.jpg" />
+                    <Avatar.Fallback>W</Avatar.Fallback>
+                </Avatar>
+                <Badge shape="circle" severity="danger"></Badge>
+            </Badge.Overlay>
+
+            {/* Shape
+            Use the shape property to change the appearance. */}
+            <Avatar shape="circle" size="large">
+                <Avatar.Image src="https://primefaces.org/cdn/primevue/images/organization/walter.jpg" />
+                <Avatar.Fallback>W</Avatar.Fallback>
+            </Avatar>
+            <Avatar shape="square" size="large">
+                <Avatar.Image src="https://primefaces.org/cdn/primevue/images/organization/walter.jpg" />
+                <Avatar.Fallback>W</Avatar.Fallback>
+            </Avatar>
+
+            {/* Sizes
+            Use the size property to change the size of an avatar. */}
+            <Avatar shape="circle" size="normal">
+                <Avatar.Image src="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" />
+                <Avatar.Fallback>CC</Avatar.Fallback>
+            </Avatar>
+            <Avatar shape="circle" size="large">
+                <Avatar.Image src="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" />
+                <Avatar.Fallback>CC</Avatar.Fallback>
+            </Avatar>
+            <Avatar shape="circle" size="xlarge">
+                <Avatar.Image src="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" />
+                <Avatar.Fallback>CC</Avatar.Fallback>
+            </Avatar>
+
         </div>
     )
 }

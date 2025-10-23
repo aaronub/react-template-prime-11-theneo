@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react'; 
 import { Button } from 'primereact/button';
+import { Badge } from 'primereact/badge';
 
 export default function ButtonDemo() {
     const [loading, setLoading] = useState<boolean>(false);
+    const [size] = useState<'small' | 'normal' | 'large'>('normal');
 
     const load = () => {
         setLoading(true);
@@ -17,58 +19,124 @@ export default function ButtonDemo() {
         <div>
             {/* Severity
             Severity defines the type of button. */}
-            <Button label="Primary" />
-            <Button label="Secondary" severity="secondary" />
-            <Button label="Success" severity="success" />
-            <Button label="Info" severity="info" />
-            <Button label="Warning" severity="warning" />
-            <Button label="Help" severity="help" />
-            <Button label="Danger" severity="danger" />
+            <Button>Primary</Button>
+            <Button severity="secondary">Secondary</Button>
+            <Button severity="success">Success</Button>
+            <Button severity="info">Info</Button>
+            <Button severity="warn">Warn</Button>
+            <Button severity="help">Help</Button>
+            <Button severity="danger">Danger</Button>
+            <Button severity="contrast">Contrast</Button>
 
-            {/* Icons
-            Icon of a button is specified with icon property and position is configured using iconPos attribute. */}
-            <Button icon="pi pi-check" />
-            <Button label="Submit" icon="pi pi-check" />
-            <Button label="Submit" icon="pi pi-check" iconPos="right" />
+            {/* Icons */}
+            <Button aria-label="Save">
+                <i className="pi pi-home" />
+            </Button>
+            <Button>
+                <i className="pi pi-user" />
+                Profile
+            </Button>
+            <Button>
+                Save
+                <i className="pi pi-check" />
+            </Button>
+            <Button className="flex-col">
+                <i className="pi pi-search" />
+                Search
+            </Button>
+            <Button className="flex-col">
+                Update
+                <i className="pi pi-refresh" />
+            </Button>
 
             {/* Loading
             Busy state is controlled with the loading property. */}
-            <Button label="Submit" icon="pi pi-check" loading={loading} onClick={load} />
+            <Button type="button" onClick={load} disabled={loading}>
+                {loading ? <i className="pi pi-spinner animate-spin" /> : <i className="pi pi-check" />}
+                {loading ? 'Loading...' : 'Search'}
+            </Button>
+            <Button type="button" onClick={load} disabled={loading} iconOnly>
+                {loading ? <i className="pi pi-spinner animate-spin" /> : <i className="pi pi-check" />}
+            </Button>
             
 
             {/* Rounded
             Rounded buttons have a circular border radius. */}
-            <Button label="Primary" rounded />
-            <Button label="Secondary" severity="secondary" rounded />
+            <Button rounded>Primary</Button>
+            <Button severity="secondary" rounded>
+                Secondary
+            </Button>
 
             {/* Text
             Text buttons are displayed as textual elements. */}
-            <Button label="Primary" text />
-            <Button label="Secondary" severity="secondary" text />
+            <Button variant="text">Primary</Button>
+            <Button severity="secondary" variant="text">
+                Secondary
+            </Button>
 
             {/* Outlined
             Outlined buttons display a border without a background initially. */}
-            <Button label="Primary" outlined />
-            <Button label="Secondary" severity="secondary" outlined />
+            <Button variant="outlined">Primary</Button>
+            <Button severity="secondary" variant="outlined">
+                Secondary
+            </Button>
 
 
             {/* Icon Only
-            Buttons can have icons without labels. */}
-            <Button icon="pi pi-check" aria-label="Filter" />
-            <Button icon="pi pi-check" rounded aria-label="Filter" />            
-            <Button icon="pi pi-check" rounded outlined aria-label="Filter" />
-            <Button icon="pi pi-check" rounded text aria-label="Filter" />
+            Buttons can have icons without labels. Use iconOnly to display only an icon. */}
+            <Button aria-label="Filter" size={size} iconOnly>
+                <i className="pi pi-check" />
+            </Button>
+            <Button rounded aria-label="Filter" size={size} iconOnly>
+                <i className="pi pi-check" />
+            </Button>
+            <Button rounded variant="outlined" aria-label="Filter" size={size} iconOnly>
+                <i className="pi pi-check" />
+            </Button>
+            <Button rounded variant="text" aria-label="Filter" size={size} iconOnly>
+                <i className="pi pi-check" />
+            </Button>
+
 
             {/* Badges
-            Buttons have built-in badge support with badge and badgeClassName properties. */}
-            <Button type="button" label="Emails" badge="8" />
-            <Button type="button" label="Messages" icon="pi pi-users" outlined badge="2" badgeClassName="p-badge-danger" />
+            Badge component can be used to display a badge inside a button. Badge.Overlay is used to display a badge on a button. */}
+            <Button type="button">
+                Emails
+                <Badge severity="secondary" shape="circle">
+                    2
+                </Badge>
+            </Button>
+ 
+            <Button type="button" variant="outlined">
+                <i className="pi pi-users" />
+                Messages
+                <Badge severity="contrast" shape="circle">
+                    2
+                </Badge>
+            </Button>
+ 
+            <Badge.Overlay>
+                <Button type="button" variant="outlined">
+                    <i className="pi pi-bell" />
+                </Button>
+                <Badge severity="info" className="animate-pulse" />
+            </Badge.Overlay>
+
 
             {/* Sizes
             Button provides small and large sizes as alternatives to the standard. */}
-            <Button label="Small" icon="pi pi-check" size="small" />
-            <Button label="Normal" icon="pi pi-check" />
-            <Button label="Large" icon="pi pi-check" size="large" />
+            <Button size="small">
+                <i className="pi pi-check" />
+                Small
+            </Button>
+            <Button>
+                <i className="pi pi-check" />
+                Normal
+            </Button>
+            <Button size="large">
+                <i className="pi pi-check" />
+                Large
+            </Button>
             
             {/* Disabled
             When disabled is present, the element cannot be edited and focused. */}

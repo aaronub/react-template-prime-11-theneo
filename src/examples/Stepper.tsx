@@ -1,45 +1,177 @@
 
 import React, { useRef } from "react";
 import { Stepper } from 'primereact/stepper';
-import { StepperPanel } from 'primereact/stepperpanel';
+import type { StepperPanelInstance } from '@primereact/types/shared/stepper';
 import { Button } from 'primereact/button';
 
 export default function StepperDemo() {
-    const stepperRef = useRef<any>(null);
 
     return (
     <div >
-        {/* Basic
-        Stepper consists of one or more StepperPanel elements to encapsulate each step in the progress. The elements to navigate between the steps are not built-in for ease of customization, instead prevCallback and nextCallback events should be bound to your custom UI elements. */}
-        <Stepper ref={stepperRef} style={{ flexBasis: '50rem' }}>
-            <StepperPanel header="Header I">
-                <div className="flex flex-col h-[12rem]">
-                    <div className="border-2 border-dashed border-gray-300 rounded bg-gray-100 flex-1 flex justify-center items-center font-medium">Content I</div>
-                </div>
-                <div className="flex pt-4 justify-end">
-                    <Button label="Next" icon="pi pi-arrow-right" iconPos="right" onClick={() => stepperRef.current?.nextCallback()} />
-                </div>
-            </StepperPanel>
-            <StepperPanel header="Header II">
-                <div className="flex flex-col h-[12rem]">
-                    <div className="border-2 border-dashed border-gray-300 rounded bg-gray-100 flex-1 flex justify-center items-center font-medium">Content II</div>
-                </div>
-                <div className="flex pt-4 justify-between">
-                    <Button label="Back" severity="secondary" icon="pi pi-arrow-left" onClick={() => stepperRef.current?.prevCallback()} />
-                    <Button label="Next" icon="pi pi-arrow-right" iconPos="right" onClick={() => stepperRef.current?.nextCallback()} />
-                </div>
-            </StepperPanel>
-            <StepperPanel header="Header III">
-                <div className="flex flex-col h-[12rem]">
-                    <div className="border-2 border-dashed border-gray-300 rounded bg-gray-100 flex-1 flex justify-center items-center font-medium">Content III</div>
-                </div>
-                <div className="flex pt-4 justify-start">
-                    <Button label="Back" severity="secondary" icon="pi pi-arrow-left" onClick={() => stepperRef.current?.prevCallback()} />
-                </div>
-            </StepperPanel>
+        {/* Horizontal
+        Stepper requires two Stepper.List, Stepper.Step, Stepper.Panels and Stepper.Panel components as children which are displayed horizontally. */}
+        <Stepper value="1" className="basis-[50rem]">
+            <Stepper.List>
+                <Stepper.Step value="1">
+                    <Stepper.Header>
+                        <Stepper.Number>1</Stepper.Number>
+                        <Stepper.Title>Header I</Stepper.Title>
+                    </Stepper.Header>
+                    <Stepper.Separator />
+                </Stepper.Step>
+                <Stepper.Step value="2">
+                    <Stepper.Header>
+                        <Stepper.Number>2</Stepper.Number>
+                        <Stepper.Title>Header II</Stepper.Title>
+                    </Stepper.Header>
+                    <Stepper.Separator />
+                </Stepper.Step>
+                <Stepper.Step value="3">
+                    <Stepper.Header>
+                        <Stepper.Number>3</Stepper.Number>
+                        <Stepper.Title>Header III</Stepper.Title>
+                    </Stepper.Header>
+                </Stepper.Step>
+            </Stepper.List>
+            <Stepper.Panels>
+                <Stepper.Panel value="1">
+                    <div className="flex flex-col h-48">
+                        <div className="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">Content I</div>
+                    </div>
+                </Stepper.Panel>
+                <Stepper.Panel value="2">
+                    <div className="flex flex-col h-48">
+                        <div className="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">Content II</div>
+                    </div>
+                </Stepper.Panel>
+                <Stepper.Panel value="3">
+                    <div className="flex flex-col h-48">
+                        <div className="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">Content III</div>
+                    </div>
+                </Stepper.Panel>
+            </Stepper.Panels>
         </Stepper>
 
-        
+        {/* Linear#
+        Linear mode enforces step-by-step progression through the workflow, requiring users to complete the current step before proceeding to the next one. This ensures a controlled navigation flow through the process. */}
+        <Stepper defaultValue="1" linear className="basis-[50rem]">
+            <Stepper.List>
+                <Stepper.Step value="1">
+                    <Stepper.Header>
+                        <Stepper.Number>1</Stepper.Number>
+                        <Stepper.Title>Header I</Stepper.Title>
+                    </Stepper.Header>
+                    <Stepper.Separator />
+                </Stepper.Step>
+                <Stepper.Step value="2">
+                    <Stepper.Header>
+                        <Stepper.Number>2</Stepper.Number>
+                        <Stepper.Title>Header II</Stepper.Title>
+                    </Stepper.Header>
+                    <Stepper.Separator />
+                </Stepper.Step>
+                <Stepper.Step value="3">
+                    <Stepper.Header>
+                        <Stepper.Number>3</Stepper.Number>
+                        <Stepper.Title>Header III</Stepper.Title>
+                    </Stepper.Header>
+                </Stepper.Step>
+            </Stepper.List>
+            <Stepper.Panels>
+                <Stepper.Panel asChild value="1">
+                    {(instance: StepperPanelInstance) => {
+                        const { stepper } = instance;
+
+                        return (
+                            <>
+                                <div className="flex flex-col h-48">
+                                    <div className="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">Content I</div>
+                                </div>
+                                <div className="flex pt-6 justify-end">
+                                    <Button onClick={() => stepper?.setActiveStep('2')}>
+                                        Next
+                                        <i className="pi pi-arrow-right " />
+                                    </Button>
+                                </div>
+                            </>
+                        );
+                    }}
+                </Stepper.Panel>
+                <Stepper.Panel asChild value="2">
+                    {(instance: StepperPanelInstance) => {
+                        const { stepper } = instance;
+
+                        return (
+                            <>
+                                <div className="flex flex-col h-48">
+                                    <div className="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">Content II</div>
+                                </div>
+                                <div className="flex pt-6 justify-between">
+                                    <Button severity="secondary" onClick={() => stepper?.setActiveStep('1')}>
+                                        <i className="pi pi-arrow-left" />
+                                        Back
+                                    </Button>
+                                    <Button onClick={() => stepper?.setActiveStep('3')}>
+                                        Next
+                                        <i className="pi pi-arrow-right" />
+                                    </Button>
+                                </div>
+                            </>
+                        );
+                    }}
+                </Stepper.Panel>
+                <Stepper.Panel asChild value="3">
+                    {(instance: StepperPanelInstance) => {
+                        const { stepper } = instance;
+
+                        return (
+                            <>
+                                <div className="flex flex-col h-48">
+                                    <div className="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">Content III</div>
+                                </div>
+                                <div className="pt-6 ">
+                                    <Button severity="secondary" onClick={() => stepper?.setActiveStep('2')}>
+                                        <i className="pi pi-arrow-left " />
+                                        Back
+                                    </Button>
+                                </div>
+                            </>
+                        );
+                    }}
+                </Stepper.Panel>
+            </Stepper.Panels>
+        </Stepper>
+
+        {/* Steps Only
+        When you need a more compact UI, the steps-only mode displays just the step indicators without content panels. This is useful for indicating progress without showing the actual step content. */}
+        <Stepper value="1" className="basis-[50rem]">
+            <Stepper.List>
+                <Stepper.Step value="1">
+                    <Stepper.Header>
+                        <Stepper.Number>1</Stepper.Number>
+                        <Stepper.Title>Design</Stepper.Title>
+                    </Stepper.Header>
+                    <Stepper.Separator />
+                </Stepper.Step>
+                <Stepper.Step value="2">
+                    <Stepper.Header>
+                        <Stepper.Number>2</Stepper.Number>
+                        <Stepper.Title>Development</Stepper.Title>
+                    </Stepper.Header>
+                    <Stepper.Separator />
+                </Stepper.Step>
+                <Stepper.Step value="3">
+                    <Stepper.Header>
+                        <Stepper.Number>3</Stepper.Number>
+                        <Stepper.Title>QA</Stepper.Title>
+                    </Stepper.Header>
+                    <Stepper.Separator />
+                </Stepper.Step>
+            </Stepper.List>
+        </Stepper>
+
+
+
     </div>
     )
 }

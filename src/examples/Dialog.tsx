@@ -1,54 +1,101 @@
 
 import React, { useState } from "react";
+import type { DialogContentInstance } from '@primereact/types/shared/dialog';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
-import { Avatar } from 'primereact/avatar';
+import { InputText } from 'primereact/inputtext';
+import { Label } from 'primereact/label';
 
 export default function DialogDemo() {
-    const [visible, setVisible] = useState<boolean>(false);
-
-    const headerElement = (
-        <div className="inline-flex align-items-center justify-content-center gap-2">
-            <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png" shape="circle" />
-            <span className="font-bold white-space-nowrap">Amy Elsner</span>
-        </div>
-    );
-
-    const footerContent = (
-        <div>
-            <Button label="Ok" icon="pi pi-check" onClick={() => setVisible(false)} autoFocus />
-        </div>
-    );
+    
 
     return (
         <div >
             {/* Basic
-            Dialog is used as a container and visibility is controlled with a binding to visible and onHide event callback. Dialogs are draggable and resizable by default. */}
-            <Button label="Show" icon="pi pi-external-link" onClick={() => setVisible(true)} />
-            <Dialog header="Header" visible={visible} style={{ width: '50vw' }} onHide={() => {if (!visible) return; setVisible(false); }}>
-                <p className="m-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                </p>
+            Dialog is defined using Dialog, Dialog.Trigger, Dialog.Portal, Dialog.Header, Dialog.Content and Dialog.Footer components. */}
+            <Dialog modal>
+                <Dialog.Trigger>Show</Dialog.Trigger>
+                <Dialog.Portal style={{ width: '25rem' }}>
+                    <Dialog.Header>
+                        <Dialog.Title>Edit Profile</Dialog.Title>
+                        <Dialog.Close />
+                    </Dialog.Header>
+                    <Dialog.Content>
+                        {(instance: DialogContentInstance) => {
+                            const { dialog } = instance;
+ 
+                            return (
+                                <>
+                                    <span className="text-surface-500 dark:text-surface-400 block mb-8">Update your information.</span>
+                                    <div className="flex items-center gap-4 mb-4">
+                                        <Label htmlFor="username" className="font-semibold w-24">
+                                            Username
+                                        </Label>
+                                        <InputText id="username" className="flex-auto" autoComplete="off" />
+                                    </div>
+                                    <div className="flex items-center gap-4 mb-8">
+                                        <Label htmlFor="email" className="font-semibold w-24">
+                                            Email
+                                        </Label>
+                                        <InputText id="email" className="flex-auto" autoComplete="off" />
+                                    </div>
+                                    <div className="flex justify-end gap-2">
+                                        <Button onClick={dialog?.close} severity="secondary">
+                                            Cancel
+                                        </Button>
+                                        <Button onClick={dialog?.close}>Sign-In</Button>
+                                    </div>
+                                </>
+                            );
+                        }}
+                    </Dialog.Content>
+                </Dialog.Portal>
             </Dialog>
 
-            {/* Template
-            Header and Footer sections allow customization via templating. */}
-            <Button label="Show" icon="pi pi-external-link" onClick={() => setVisible(true)} />
-            <Dialog visible={visible} modal header={headerElement} footer={footerContent} style={{ width: '50rem' }} onHide={() => {if (!visible) return; setVisible(false); }}>
-                <p className="m-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                </p>
-            </Dialog>
 
             {/* Without Modal
-            Mask layer behind the Dialog can be turned off by disabling the modal property. */}
-            <Button label="Show" icon="pi pi-external-link" onClick={() => setVisible(true)} />
-            <Dialog header="Header" visible={visible} modal={false} style={{ width: '50vw' }} onHide={() => {if (!visible) return; setVisible(false); }}>
-                <p className="m-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                </p>
+            Mask layer behind the Dialog is configured with the modal property. By default, no modal layer is added. */}
+            <Dialog>
+                <Dialog.Trigger>Show</Dialog.Trigger>
+                <Dialog.Portal style={{ width: '25rem' }}>
+                    <Dialog.Header>
+                        <Dialog.Title>Edit Profile</Dialog.Title>
+                        <Dialog.HeaderActions>
+                            <Dialog.Close />
+                        </Dialog.HeaderActions>
+                    </Dialog.Header>
+                    <Dialog.Content>
+                        {(instance: DialogContentInstance) => {
+                            const { dialog } = instance;
+ 
+                            return (
+                                <>
+                                    <span className="text-surface-500 dark:text-surface-400 block mb-8">Update your information.</span>
+                                    <div className="flex items-center gap-4 mb-4">
+                                        <Label htmlFor="username" className="font-semibold w-24">
+                                            Username
+                                        </Label>
+                                        <InputText id="username" className="flex-auto" autoComplete="off" />
+                                    </div>
+                                    <div className="flex items-center gap-4 mb-8">
+                                        <Label htmlFor="email" className="font-semibold w-24">
+                                            Email
+                                        </Label>
+                                        <InputText id="email" className="flex-auto" autoComplete="off" />
+                                    </div>
+                                    <div className="flex justify-end gap-2">
+                                        <Button type="button" severity="secondary" onClick={dialog?.close}>
+                                            Cancel
+                                        </Button>
+                                        <Button type="button" onClick={dialog?.close}>
+                                            Save
+                                        </Button>
+                                    </div>
+                                </>
+                            );
+                        }}
+                    </Dialog.Content>
+                </Dialog.Portal>
             </Dialog>
         </div>
     )

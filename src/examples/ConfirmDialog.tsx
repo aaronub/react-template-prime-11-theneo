@@ -1,56 +1,32 @@
 
-import React, { useRef } from 'react';
-import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
-import { Toast } from 'primereact/toast';
-import { Button } from 'primereact/button';
+import React from 'react';
+import { ConfirmDialog } from 'primereact/confirmdialog';
 
 export default function ConfirmDialogDemo() {
-    const toast = useRef<Toast>(null);
 
-    const accept = () => {
-        toast.current?.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
-    }
-
-    const reject = () => {
-        toast.current?.show({ severity: 'warn', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
-    }
-
-    const confirm1 = () => {
-        confirmDialog({
-            message: 'Are you sure you want to proceed?',
-            header: 'Confirmation',
-            icon: 'pi pi-exclamation-triangle',
-            defaultFocus: 'accept',
-            accept,
-            reject
-        });
-    };
-
-    const confirm2 = () => {
-        confirmDialog({
-            message: 'Do you want to delete this record?',
-            header: 'Delete Confirmation',
-            icon: 'pi pi-info-circle',
-            defaultFocus: 'reject',
-            acceptClassName: 'p-button-danger',
-            accept,
-            reject
-        });
-    };
 
     return (
         <>
             {/* Basic
-            A ConfirmDialog component needs to be present on the page that is interacted with the confirmDialog function that takes a configuration object for customization. */}
-            <Toast ref={toast} />
-            <ConfirmDialog />
-            <div className="card flex flex-wrap gap-2 justify-content-center">
-                <Button onClick={confirm1} icon="pi pi-check" label="Confirm" className="mr-2"></Button>
-                <Button onClick={confirm2} icon="pi pi-times" label="Delete"></Button>
-            </div>
+            ConfirmDialog is defined using ConfirmDialog, ConfirmDialog.Trigger, ConfirmDialog.Portal, ConfirmDialog.Header, ConfirmDialog.Content and ConfirmDialog.Footer components. */}
+            <ConfirmDialog>
+                <ConfirmDialog.Trigger variant="outlined">Save</ConfirmDialog.Trigger>
+                <ConfirmDialog.Portal>
+                    <ConfirmDialog.Header>
+                        <ConfirmDialog.Title>Edit Profile</ConfirmDialog.Title>
+                        <ConfirmDialog.Close />
+                    </ConfirmDialog.Header>
+                    <ConfirmDialog.Content>
+                        <ConfirmDialog.Icon className="pi pi-exclamation-triangle" />
+                        <ConfirmDialog.Message>Are you sure you want to proceed?</ConfirmDialog.Message>
+                    </ConfirmDialog.Content>
+                    <ConfirmDialog.Footer>
+                        <ConfirmDialog.Cancel variant="outlined">Cancel</ConfirmDialog.Cancel>
+                        <ConfirmDialog.Action>Save</ConfirmDialog.Action>
+                    </ConfirmDialog.Footer>
+                </ConfirmDialog.Portal>
+            </ConfirmDialog>
 
-
-            
         </>
     )
 }
