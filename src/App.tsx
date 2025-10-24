@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Checkbox } from 'primereact/checkbox';
-import InputNumberDemo from './examples/InputNumber';
 
 function App() {
   const [inputValue, setInputValue] = useState<string>('');
@@ -155,12 +154,6 @@ function App() {
                     </label>
                 </div>
           </div>
-        </div>
-
-        {/* InputNumber Examples */}
-        <div className="bg-white p-6 rounded-lg shadow mb-6">
-          <h2 className="text-xl font-semibold text-gray-700 mb-4">InputNumber Component</h2>
-          <InputNumberDemo />
         </div>
 
       </div>
