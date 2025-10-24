@@ -2,21 +2,15 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { PrimeReactProvider } from '@primereact/core';
-import Aura from '@primeuix/themes/aura';
-// import WEXBrandTheme from '@wexinc/wex-brand-theme';
-
+import WEXBrandTheme from '../packages/wex-brand-theme/index';
 import './index.css'
 import App from './App.tsx'
+import 'primeicons/primeicons.css'
 
 const theme = {
-  // preset: WEXBrandTheme
-  preset: Aura
+  preset: WEXBrandTheme
 };
 
-// PrimeReact theme and icons
-// import 'primereact/resources/themes/lara-light-blue/theme.css'
-// import 'primereact/resources/primereact.min.css'
-import 'primeicons/primeicons.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -4,14 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "npm install --prefix packages/wex-brand-theme && npm install && vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "@primereact/types": "^11.0.0-alpha.7",
-    "@primeuix/themes": "^1.2.5",
     "chart.js": "^4.5.0",
     "primeicons": "^7.0.0",
     "primereact": "^11.0.0-alpha.7",
