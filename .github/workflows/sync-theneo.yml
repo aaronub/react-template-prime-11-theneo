@@ -22,9 +22,30 @@ jobs:
       - name: Install Theneo CLI
         run: npm install -g @theneo/cli
       
+      - name: Authenticate Theneo CLI
+        env:
+          THENEO_API_KEY: ${{ secrets.THENEO_API_KEY }}
+          THENEO_TOKEN: ${{ secrets.THENEO_API_KEY }}
+          NODE_TLS_REJECT_UNAUTHORIZED: '0'
+        run: |
+          echo "Attempting to authenticate with Theneo..."
+          
+          # Try method 1: Login with token flag
+          theneo login --token "$THENEO_API_KEY" || echo "Method 1 failed"
+          
+          # Try method 2: Auth command
+          theneo auth "$THENEO_API_KEY" || echo "Method 2 failed"
+          
+          # Try method 3: Set token directly
+          theneo config set token "$THENEO_API_KEY" || echo "Method 3 failed"
+          
+          # Check authentication status
+          theneo whoami || echo "Not authenticated yet"
+      
       - name: Sync Theneo data
         env:
           THENEO_API_KEY: ${{ secrets.THENEO_API_KEY }}
+          THENEO_TOKEN: ${{ secrets.THENEO_API_KEY }}
           NODE_TLS_REJECT_UNAUTHORIZED: '0'
         run: |
           chmod +x ./theneo-sync.sh
@@ -36,4 +57,3 @@ jobs:
           git config --global user.email 'actions@github.com'
           git add public/api/
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update Theneo data" && git push)
-
