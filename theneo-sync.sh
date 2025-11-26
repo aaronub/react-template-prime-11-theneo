@@ -1,13 +1,26 @@
 #!/bin/bash
 
-# Set PATH to include node and theneo
-export PATH="/Users/w512330/.nvm/versions/node/v20.19.5/bin:/usr/local/bin:/usr/bin:/bin"
+# Get the directory where this script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Directory where your React app is located:
-REACT_PUBLIC="/Users/w512330/Desktop/wex/theme/react-template-prime-11-theneo/public/api"
+# Set PATH to include node and theneo (for local Mac usage)
+export PATH="/Users/w512330/.nvm/versions/node/v20.19.5/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
 
-# Full path to theneo command
-THENEO="/Users/w512330/.nvm/versions/node/v20.19.5/bin/theneo"
+# Use relative path from script location
+REACT_PUBLIC="$SCRIPT_DIR/public/api"
+
+# Try to find theneo command (works both locally and in CI)
+if command -v theneo &> /dev/null; then
+    THENEO="theneo"
+elif [ -f "/Users/w512330/.nvm/versions/node/v20.19.5/bin/theneo" ]; then
+    THENEO="/Users/w512330/.nvm/versions/node/v20.19.5/bin/theneo"
+else
+    echo "Error: theneo command not found"
+    exit 1
+fi
+
+echo "Using theneo at: $(which $THENEO || echo $THENEO)"
+echo "Output directory: $REACT_PUBLIC"
 
 # Export each project
 echo "Exporting Wex Health..."
