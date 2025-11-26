@@ -1,0 +1,39 @@
+name: Sync Theneo Data
+
+on:
+  schedule:
+    # Run every hour (GitHub Actions doesn't support every minute)
+    - cron: '0 * * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      
+      - name: Install Theneo CLI
+        run: npm install -g @theneo/cli
+      
+      - name: Sync Theneo data
+        env:
+          THENEO_API_KEY: ${{ secrets.THENEO_API_KEY }}
+          NODE_TLS_REJECT_UNAUTHORIZED: '0'
+        run: |
+          chmod +x ./theneo-sync.sh
+          ./theneo-sync.sh
+      
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add public/api/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Theneo data" && git push)
+
