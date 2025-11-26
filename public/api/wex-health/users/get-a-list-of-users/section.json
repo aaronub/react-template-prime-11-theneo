@@ -1,0 +1,385 @@
+{
+  "endpoints": {
+    "method": "get",
+    "path": "/users"
+  },
+  "request": {
+    "query": [
+      {
+        "name": "email",
+        "description": "Filter by user email",
+        "isRequired": false,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "username",
+        "description": "Filter by username",
+        "isRequired": false,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "role",
+        "description": "Filter by user role (e.g., admin, employee, employer)",
+        "isRequired": false,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "page",
+        "description": "Page number for pagination",
+        "isRequired": false,
+        "value": "1",
+        "valueType": "integer",
+        "items": [],
+        "options": {
+          "minimum": 1,
+          "format": "int32",
+          "defaultValue": "1",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "limit",
+        "description": "Number of records per page",
+        "isRequired": false,
+        "value": "20",
+        "valueType": "integer",
+        "items": [],
+        "options": {
+          "minimum": 1,
+          "maximum": 100,
+          "format": "int32",
+          "defaultValue": "20",
+          "xml": {
+            "prefix": null
+          }
+        }
+      }
+    ],
+    "body": [],
+    "header": [],
+    "path": [],
+    "contentType": "",
+    "graphqlQuery": "",
+    "codeExamples": [],
+    "_id": "682fcc4a79530e3cd0d67c97"
+  },
+  "responses": [
+    {
+      "name": "200",
+      "status": "OK",
+      "body": [
+        {
+          "name": "0",
+          "description": "",
+          "isRequired": false,
+          "value": "",
+          "valueType": "array",
+          "items": [
+            {
+              "name": "id",
+              "description": "Unique identifier for the user",
+              "isRequired": false,
+              "value": "",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "format": "uuid",
+                "readWriteReadOnly": "readOnly",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "username",
+              "description": "User's chosen username",
+              "isRequired": true,
+              "value": "john.doe",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "example": "john.doe",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "email",
+              "description": "User's email address",
+              "isRequired": true,
+              "value": "john.doe@example.com",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "format": "email",
+                "example": "john.doe@example.com",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "firstName",
+              "description": "User's first name",
+              "isRequired": true,
+              "value": "John",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "example": "John",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "lastName",
+              "description": "User's last name",
+              "isRequired": true,
+              "value": "Doe",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "example": "Doe",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "roles",
+              "description": "Roles assigned to the user",
+              "isRequired": true,
+              "value": "admin",
+              "valueType": "array",
+              "items": [
+                {
+                  "name": "0",
+                  "description": "",
+                  "isRequired": false,
+                  "value": "employee",
+                  "valueType": "string",
+                  "items": [],
+                  "options": {
+                    "enumValue": [
+                      {
+                        "value": "admin"
+                      },
+                      {
+                        "value": "employer"
+                      },
+                      {
+                        "value": "employee"
+                      },
+                      {
+                        "value": "partner"
+                      }
+                    ],
+                    "xml": {
+                      "prefix": null
+                    }
+                  }
+                }
+              ],
+              "options": {
+                "enumValue": [
+                  {
+                    "value": "admin"
+                  },
+                  {
+                    "value": "employer"
+                  },
+                  {
+                    "value": "employee"
+                  },
+                  {
+                    "value": "partner"
+                  }
+                ],
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "createdAt",
+              "description": "Timestamp when the user was created",
+              "isRequired": false,
+              "value": "",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "format": "date-time",
+                "readWriteReadOnly": "readOnly",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "updatedAt",
+              "description": "Timestamp when the user was last updated",
+              "isRequired": false,
+              "value": "",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "format": "date-time",
+                "readWriteReadOnly": "readOnly",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            }
+          ],
+          "options": {
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 200,
+      "description": "A list of users",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Unauthorized",
+      "status": "Unauthorized",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "401",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Unauthorized.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Invalid access token.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 401,
+      "description": "Authentication required or failed.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Forbidden",
+      "status": "Forbidden",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "403",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Forbidden.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "User does not have write access to plans.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 403,
+      "description": "The authenticated user does not have the necessary permissions.",
+      "contentType": "application/json"
+    }
+  ],
+  "showBaseUrl": false,
+  "showLanguageBox": false,
+  "showRequestDescription": true,
+  "showResponseDescription": true,
+  "errorCodes": [],
+  "statusCodes": [],
+  "dataExample": [],
+  "endpointSummary": []
+}

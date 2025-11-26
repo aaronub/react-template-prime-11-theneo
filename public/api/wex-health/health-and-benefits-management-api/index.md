@@ -1,0 +1,1 @@
+A RESTful API for managing health and benefits data, including users, employers, employees, plans, enrollments, claims, and documents.

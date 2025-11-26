@@ -1,0 +1,422 @@
+{
+  "endpoints": {
+    "method": "put",
+    "path": "/employers/{employerId}"
+  },
+  "request": {
+    "query": [],
+    "body": [
+      {
+        "name": "name",
+        "description": "Name of the employer",
+        "isRequired": false,
+        "value": "Acme Corp Inc.",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "example": "Acme Corp Inc.",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "address",
+        "description": "Employer's physical address",
+        "isRequired": false,
+        "value": "123 Main St, Suite 200, Anytown, USA",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "example": "123 Main St, Suite 200, Anytown, USA",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "contactEmail",
+        "description": "Primary contact email for the employer",
+        "isRequired": false,
+        "value": "benefits@acmecorp.com",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "email",
+          "example": "benefits@acmecorp.com",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "contactPhone",
+        "description": "Primary contact phone for the employer",
+        "isRequired": false,
+        "value": "+1-555-111-2222",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "example": "+1-555-111-2222",
+          "xml": {
+            "prefix": null
+          }
+        }
+      }
+    ],
+    "header": [],
+    "path": [
+      {
+        "name": "employerId",
+        "description": "ID of the employer to update",
+        "isRequired": true,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "uuid",
+          "xml": {
+            "prefix": null
+          }
+        }
+      }
+    ],
+    "contentType": "application/json",
+    "graphqlQuery": "",
+    "codeExamples": [],
+    "_id": "682fcc4a79530e3cd0d67d62"
+  },
+  "responses": [
+    {
+      "name": "200",
+      "status": "OK",
+      "body": [
+        {
+          "name": "id",
+          "description": "Unique identifier for the employer",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "uuid",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "name",
+          "description": "Name of the employer",
+          "isRequired": true,
+          "value": "Acme Corp",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Acme Corp",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "address",
+          "description": "Employer's physical address",
+          "isRequired": true,
+          "value": "123 Main St, Anytown, USA",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "123 Main St, Anytown, USA",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "contactEmail",
+          "description": "Primary contact email for the employer",
+          "isRequired": true,
+          "value": "hr@acmecorp.com",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "email",
+            "example": "hr@acmecorp.com",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "contactPhone",
+          "description": "Primary contact phone for the employer",
+          "isRequired": false,
+          "value": "+1-555-123-4567",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "+1-555-123-4567",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "createdAt",
+          "description": "Timestamp when the employer was created",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "date-time",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "updatedAt",
+          "description": "Timestamp when the employer was last updated",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "date-time",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 200,
+      "description": "Employer updated successfully",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Bad Request",
+      "status": "Bad Request",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "400",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Bad Request.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Missing required field: username.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 400,
+      "description": "Invalid request payload or parameters.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Unauthorized",
+      "status": "Unauthorized",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "401",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Unauthorized.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Invalid access token.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 401,
+      "description": "Authentication required or failed.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Forbidden",
+      "status": "Forbidden",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "403",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Forbidden.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "User does not have write access to plans.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 403,
+      "description": "The authenticated user does not have the necessary permissions.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Not Found",
+      "status": "Not Found",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "404",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Resource not found.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "User with ID 123 not found.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 404,
+      "description": "The specified resource was not found.",
+      "contentType": "application/json"
+    }
+  ],
+  "showBaseUrl": false,
+  "showLanguageBox": false,
+  "showRequestDescription": true,
+  "showResponseDescription": true,
+  "errorCodes": [],
+  "statusCodes": [],
+  "dataExample": [],
+  "endpointSummary": []
+}

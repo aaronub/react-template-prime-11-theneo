@@ -1,0 +1,351 @@
+{
+  "id": "682fcb9930e52866f59981fa",
+  "name": "wex-health",
+  "lastExport": "2025-11-26T04:13:03.883Z",
+  "baseUrl": "https://api.healthbenefits.example.com/v1",
+  "sections": [
+    {
+      "name": "Health and Benefits Management API",
+      "slug": "health-and-benefits-management-api",
+      "children": [],
+      "isHeader": false,
+      "externalPageLink": "",
+      "isNewTab": false
+    },
+    {
+      "name": "Users",
+      "slug": "users",
+      "children": [
+        {
+          "name": "Get a list of users",
+          "slug": "users/get-a-list-of-users",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Create a new user",
+          "slug": "users/create-a-new-user",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Get user by ID",
+          "slug": "users/get-user-by-id",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Update an existing user",
+          "slug": "users/update-an-existing-user",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Delete a user",
+          "slug": "users/delete-a-user",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        }
+      ],
+      "isHeader": false,
+      "externalPageLink": "",
+      "isNewTab": false
+    },
+    {
+      "name": "Employers",
+      "slug": "employers",
+      "children": [
+        {
+          "name": "Get a list of employers",
+          "slug": "employers/get-a-list-of-employers",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Create a new employer",
+          "slug": "employers/create-a-new-employer",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Get employer by ID",
+          "slug": "employers/get-employer-by-id",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Update an existing employer",
+          "slug": "employers/update-an-existing-employer",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Delete an employer",
+          "slug": "employers/delete-an-employer",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        }
+      ],
+      "isHeader": false,
+      "externalPageLink": "",
+      "isNewTab": false
+    },
+    {
+      "name": "Employees",
+      "slug": "employees",
+      "children": [
+        {
+          "name": "Get a list of employees",
+          "slug": "employees/get-a-list-of-employees",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Create a new employee",
+          "slug": "employees/create-a-new-employee",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Get employee by ID",
+          "slug": "employees/get-employee-by-id",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Update an existing employee",
+          "slug": "employees/update-an-existing-employee",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Delete an employee",
+          "slug": "employees/delete-an-employee",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        }
+      ],
+      "isHeader": false,
+      "externalPageLink": "",
+      "isNewTab": false
+    },
+    {
+      "name": "Plans",
+      "slug": "plans",
+      "children": [
+        {
+          "name": "Get a list of benefit plans",
+          "slug": "plans/get-a-list-of-benefit-plans",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Create a new benefit plan",
+          "slug": "plans/create-a-new-benefit-plan",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Get plan by ID",
+          "slug": "plans/get-plan-by-id",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Update an existing plan",
+          "slug": "plans/update-an-existing-plan",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Delete a plan",
+          "slug": "plans/delete-a-plan",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        }
+      ],
+      "isHeader": false,
+      "externalPageLink": "",
+      "isNewTab": false
+    },
+    {
+      "name": "Enrollments",
+      "slug": "enrollments",
+      "children": [
+        {
+          "name": "Get a list of enrollments",
+          "slug": "enrollments/get-a-list-of-enrollments",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Create a new enrollment",
+          "slug": "enrollments/create-a-new-enrollment",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Get enrollment by ID",
+          "slug": "enrollments/get-enrollment-by-id",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Update an existing enrollment",
+          "slug": "enrollments/update-an-existing-enrollment",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Delete an enrollment",
+          "slug": "enrollments/delete-an-enrollment",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        }
+      ],
+      "isHeader": false,
+      "externalPageLink": "",
+      "isNewTab": false
+    },
+    {
+      "name": "Claims",
+      "slug": "claims",
+      "children": [
+        {
+          "name": "Get a list of claims",
+          "slug": "claims/get-a-list-of-claims",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Create a new claim",
+          "slug": "claims/create-a-new-claim",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Get claim by ID",
+          "slug": "claims/get-claim-by-id",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Update an existing claim",
+          "slug": "claims/update-an-existing-claim",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Delete a claim",
+          "slug": "claims/delete-a-claim",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        }
+      ],
+      "isHeader": false,
+      "externalPageLink": "",
+      "isNewTab": false
+    },
+    {
+      "name": "Documents",
+      "slug": "documents",
+      "children": [
+        {
+          "name": "Get a list of documents",
+          "slug": "documents/get-a-list-of-documents",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Upload a new document",
+          "slug": "documents/upload-a-new-document",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Get document by ID",
+          "slug": "documents/get-document-by-id",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        },
+        {
+          "name": "Delete a document",
+          "slug": "documents/delete-a-document",
+          "children": [],
+          "isHeader": false,
+          "externalPageLink": "",
+          "isNewTab": false
+        }
+      ],
+      "isHeader": false,
+      "externalPageLink": "",
+      "isNewTab": false
+    }
+  ]
+}

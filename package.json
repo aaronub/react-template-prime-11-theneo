@@ -3,11 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://YOUR-USERNAME.github.io/YOUR-REPO-NAME",
   "scripts": {
-    "dev": "npm install --prefix packages/wex-brand-theme && npm install && vite",
-    "build": "tsc -b && vite build",
+    "dev": "./theneo-sync.sh && npm install --prefix packages/wex-brand-theme && npm install && vite",
+    "build": "npm install --prefix packages/wex-brand-theme && tsc -b && vite build",
+    "build:sync": "./theneo-sync.sh && npm run build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync": "./theneo-sync.sh",
+    "predeploy": "npm run build:sync",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@primereact/types": "^11.0.0-alpha.7",

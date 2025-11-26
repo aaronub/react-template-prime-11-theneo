@@ -1,0 +1,405 @@
+{
+  "endpoints": {
+    "method": "post",
+    "path": "/documents"
+  },
+  "request": {
+    "query": [],
+    "body": [
+      {
+        "name": "file",
+        "description": "The document file to upload",
+        "isRequired": true,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "binary",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "relatedTo",
+        "description": "The type of entity the document is related to",
+        "isRequired": true,
+        "value": "User",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "enumValue": [
+            {
+              "value": "User"
+            },
+            {
+              "value": "Employer"
+            },
+            {
+              "value": "Employee"
+            },
+            {
+              "value": "Plan"
+            },
+            {
+              "value": "Enrollment"
+            },
+            {
+              "value": "Claim"
+            }
+          ],
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "relatedId",
+        "description": "The ID of the related entity",
+        "isRequired": true,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "uuid",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "type",
+        "description": "The type of document (e.g., \"Policy\", \"Claim Form\", \"Receipt\")",
+        "isRequired": true,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "filename",
+        "description": "The original filename of the document",
+        "isRequired": true,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "xml": {
+            "prefix": null
+          }
+        }
+      }
+    ],
+    "header": [],
+    "path": [],
+    "contentType": "multipart/form-data",
+    "graphqlQuery": "",
+    "codeExamples": [],
+    "_id": "682fcc4a79530e3cd0d67fbe"
+  },
+  "responses": [
+    {
+      "name": "201",
+      "status": "Created",
+      "body": [
+        {
+          "name": "id",
+          "description": "Unique identifier for the document",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "uuid",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "relatedTo",
+          "description": "The type of entity the document is related to",
+          "isRequired": true,
+          "value": "Employee",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "enumValue": [
+              {
+                "value": "User"
+              },
+              {
+                "value": "Employer"
+              },
+              {
+                "value": "Employee"
+              },
+              {
+                "value": "Plan"
+              },
+              {
+                "value": "Enrollment"
+              },
+              {
+                "value": "Claim"
+              }
+            ],
+            "example": "Employee",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "relatedId",
+          "description": "The ID of the related entity",
+          "isRequired": true,
+          "value": "12345678-abcd-efgh-ijkl-mnopqrstuvwx",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "uuid",
+            "example": "12345678-abcd-efgh-ijkl-mnopqrstuvwx",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "type",
+          "description": "The type of document (e.g., \"Policy\", \"Claim Form\", \"Receipt\", \"ID Card\")",
+          "isRequired": true,
+          "value": "ID Card",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "ID Card",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "filename",
+          "description": "The original filename of the document",
+          "isRequired": true,
+          "value": "JohnDoe_HealthID.pdf",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "JohnDoe_HealthID.pdf",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "url",
+          "description": "URL to access the document content",
+          "isRequired": true,
+          "value": "https://docs.healthbenefits.example.com/files/john_doe_health_id.pdf",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "uri",
+            "example": "https://docs.healthbenefits.example.com/files/john_doe_health_id.pdf",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "uploadDate",
+          "description": "Timestamp when the document was uploaded",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "date-time",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 201,
+      "description": "Document uploaded successfully",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Bad Request",
+      "status": "Bad Request",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "400",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Bad Request.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Missing required field: username.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 400,
+      "description": "Invalid request payload or parameters.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Unauthorized",
+      "status": "Unauthorized",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "401",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Unauthorized.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Invalid access token.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 401,
+      "description": "Authentication required or failed.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Forbidden",
+      "status": "Forbidden",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "403",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Forbidden.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "User does not have write access to plans.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 403,
+      "description": "The authenticated user does not have the necessary permissions.",
+      "contentType": "application/json"
+    }
+  ],
+  "showBaseUrl": false,
+  "showLanguageBox": false,
+  "showRequestDescription": true,
+  "showResponseDescription": true,
+  "errorCodes": [],
+  "statusCodes": [],
+  "dataExample": [],
+  "endpointSummary": []
+}

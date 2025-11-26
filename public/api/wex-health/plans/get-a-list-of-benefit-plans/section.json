@@ -1,0 +1,426 @@
+{
+  "endpoints": {
+    "method": "get",
+    "path": "/plans"
+  },
+  "request": {
+    "query": [
+      {
+        "name": "type",
+        "description": "Filter by plan type",
+        "isRequired": false,
+        "value": "Health",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "enumValue": [
+            {
+              "value": "Health"
+            },
+            {
+              "value": "Dental"
+            },
+            {
+              "value": "Vision"
+            },
+            {
+              "value": "Life"
+            },
+            {
+              "value": "Disability"
+            }
+          ],
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "name",
+        "description": "Filter by plan name",
+        "isRequired": false,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "effectiveDate",
+        "description": "Filter for plans effective on or after this date",
+        "isRequired": false,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "date",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "page",
+        "description": "Page number for pagination",
+        "isRequired": false,
+        "value": "1",
+        "valueType": "integer",
+        "items": [],
+        "options": {
+          "minimum": 1,
+          "format": "int32",
+          "defaultValue": "1",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "limit",
+        "description": "Number of records per page",
+        "isRequired": false,
+        "value": "20",
+        "valueType": "integer",
+        "items": [],
+        "options": {
+          "minimum": 1,
+          "maximum": 100,
+          "format": "int32",
+          "defaultValue": "20",
+          "xml": {
+            "prefix": null
+          }
+        }
+      }
+    ],
+    "body": [],
+    "header": [],
+    "path": [],
+    "contentType": "",
+    "graphqlQuery": "",
+    "codeExamples": [],
+    "_id": "682fcc4a79530e3cd0d67e0f"
+  },
+  "responses": [
+    {
+      "name": "200",
+      "status": "OK",
+      "body": [
+        {
+          "name": "0",
+          "description": "",
+          "isRequired": false,
+          "value": "",
+          "valueType": "array",
+          "items": [
+            {
+              "name": "id",
+              "description": "Unique identifier for the plan",
+              "isRequired": false,
+              "value": "",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "format": "uuid",
+                "readWriteReadOnly": "readOnly",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "name",
+              "description": "Name of the benefit plan",
+              "isRequired": true,
+              "value": "Gold PPO Health Plan",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "example": "Gold PPO Health Plan",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "type",
+              "description": "Type of benefit plan",
+              "isRequired": true,
+              "value": "Health",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "enumValue": [
+                  {
+                    "value": "Health"
+                  },
+                  {
+                    "value": "Dental"
+                  },
+                  {
+                    "value": "Vision"
+                  },
+                  {
+                    "value": "Life"
+                  },
+                  {
+                    "value": "Disability"
+                  }
+                ],
+                "example": "Health",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "description",
+              "description": "A brief description of the plan",
+              "isRequired": false,
+              "value": "Comprehensive health coverage with PPO network.",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "example": "Comprehensive health coverage with PPO network.",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "effectiveDate",
+              "description": "Date the plan becomes effective",
+              "isRequired": true,
+              "value": "2024-01-01",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "format": "date",
+                "example": "2024-01-01",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "terminationDate",
+              "description": "Date the plan terminates (if applicable)",
+              "isRequired": false,
+              "value": "2024-12-31",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "nullable": true,
+                "format": "date",
+                "example": "2024-12-31",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "premium",
+              "description": "Monthly premium cost",
+              "isRequired": true,
+              "value": "500.75",
+              "valueType": "number",
+              "items": [],
+              "options": {
+                "format": "float",
+                "example": "500.75",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "deductible",
+              "description": "Annual deductible amount",
+              "isRequired": true,
+              "value": "1000",
+              "valueType": "number",
+              "items": [],
+              "options": {
+                "format": "float",
+                "example": "1000",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "outOfPocketMax",
+              "description": "Annual out-of-pocket maximum",
+              "isRequired": true,
+              "value": "5000",
+              "valueType": "number",
+              "items": [],
+              "options": {
+                "format": "float",
+                "example": "5000",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "createdAt",
+              "description": "Timestamp when the plan was created",
+              "isRequired": false,
+              "value": "",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "format": "date-time",
+                "readWriteReadOnly": "readOnly",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            },
+            {
+              "name": "updatedAt",
+              "description": "Timestamp when the plan was last updated",
+              "isRequired": false,
+              "value": "",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "format": "date-time",
+                "readWriteReadOnly": "readOnly",
+                "xml": {
+                  "prefix": null
+                }
+              }
+            }
+          ],
+          "options": {
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 200,
+      "description": "A list of plans",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Unauthorized",
+      "status": "Unauthorized",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "401",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Unauthorized.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Invalid access token.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 401,
+      "description": "Authentication required or failed.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Forbidden",
+      "status": "Forbidden",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "403",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Forbidden.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "User does not have write access to plans.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 403,
+      "description": "The authenticated user does not have the necessary permissions.",
+      "contentType": "application/json"
+    }
+  ],
+  "showBaseUrl": false,
+  "showLanguageBox": false,
+  "showRequestDescription": true,
+  "showResponseDescription": true,
+  "errorCodes": [],
+  "statusCodes": [],
+  "dataExample": [],
+  "endpointSummary": []
+}

@@ -1,0 +1,208 @@
+{
+  "endpoints": {
+    "method": "delete",
+    "path": "/users/{userId}"
+  },
+  "request": {
+    "query": [],
+    "body": [],
+    "header": [],
+    "path": [
+      {
+        "name": "userId",
+        "description": "ID of the user to delete",
+        "isRequired": true,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "uuid",
+          "xml": {
+            "prefix": null
+          }
+        }
+      }
+    ],
+    "contentType": "",
+    "graphqlQuery": "",
+    "codeExamples": [],
+    "_id": "682fcc4a79530e3cd0d67d04"
+  },
+  "responses": [
+    {
+      "name": "User deleted successfully",
+      "status": "No Content",
+      "body": [],
+      "statusCode": 204,
+      "description": "User deleted successfully",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Unauthorized",
+      "status": "Unauthorized",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "401",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Unauthorized.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Invalid access token.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 401,
+      "description": "Authentication required or failed.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Forbidden",
+      "status": "Forbidden",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "403",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Forbidden.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "User does not have write access to plans.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 403,
+      "description": "The authenticated user does not have the necessary permissions.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Not Found",
+      "status": "Not Found",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "404",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Resource not found.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "User with ID 123 not found.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 404,
+      "description": "The specified resource was not found.",
+      "contentType": "application/json"
+    }
+  ],
+  "showBaseUrl": false,
+  "showLanguageBox": false,
+  "showRequestDescription": true,
+  "showResponseDescription": true,
+  "errorCodes": [],
+  "statusCodes": [],
+  "dataExample": [],
+  "endpointSummary": []
+}

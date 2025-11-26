@@ -1,0 +1,15 @@
+{
+  "endpoints": {
+    "method": "GET",
+    "path": ""
+  },
+  "request": null,
+  "showBaseUrl": false,
+  "showLanguageBox": false,
+  "showRequestDescription": true,
+  "showResponseDescription": true,
+  "errorCodes": [],
+  "statusCodes": [],
+  "dataExample": [],
+  "endpointSummary": []
+}

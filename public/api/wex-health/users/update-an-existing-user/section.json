@@ -1,0 +1,574 @@
+{
+  "endpoints": {
+    "method": "put",
+    "path": "/users/{userId}"
+  },
+  "request": {
+    "query": [],
+    "body": [
+      {
+        "name": "username",
+        "description": "User's chosen username",
+        "isRequired": false,
+        "value": "jane.s",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "example": "jane.s",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "email",
+        "description": "User's email address",
+        "isRequired": false,
+        "value": "jane.s@example.com",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "email",
+          "example": "jane.s@example.com",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "password",
+        "description": "User's new password (if changing)",
+        "isRequired": false,
+        "value": "NewStrongPassword456!",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "password",
+          "example": "NewStrongPassword456!",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "firstName",
+        "description": "User's first name",
+        "isRequired": false,
+        "value": "Janet",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "example": "Janet",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "lastName",
+        "description": "User's last name",
+        "isRequired": false,
+        "value": "Smithers",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "example": "Smithers",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "roles",
+        "description": "Roles assigned to the user",
+        "isRequired": false,
+        "value": "admin",
+        "valueType": "array",
+        "items": [
+          {
+            "name": "0",
+            "description": "",
+            "isRequired": false,
+            "value": "employee",
+            "valueType": "string",
+            "items": [],
+            "options": {
+              "enumValue": [
+                {
+                  "value": "admin"
+                },
+                {
+                  "value": "employer"
+                },
+                {
+                  "value": "employee"
+                },
+                {
+                  "value": "partner"
+                }
+              ],
+              "xml": {
+                "prefix": null
+              }
+            }
+          },
+          {
+            "name": "1",
+            "description": "",
+            "isRequired": false,
+            "value": "partner",
+            "valueType": "string",
+            "items": [],
+            "options": {
+              "enumValue": [
+                {
+                  "value": "admin"
+                },
+                {
+                  "value": "employer"
+                },
+                {
+                  "value": "employee"
+                },
+                {
+                  "value": "partner"
+                }
+              ],
+              "xml": {
+                "prefix": null
+              }
+            }
+          }
+        ],
+        "options": {
+          "enumValue": [
+            {
+              "value": "admin"
+            },
+            {
+              "value": "employer"
+            },
+            {
+              "value": "employee"
+            },
+            {
+              "value": "partner"
+            }
+          ],
+          "xml": {
+            "prefix": null
+          }
+        }
+      }
+    ],
+    "header": [],
+    "path": [
+      {
+        "name": "userId",
+        "description": "ID of the user to update",
+        "isRequired": true,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "uuid",
+          "xml": {
+            "prefix": null
+          }
+        }
+      }
+    ],
+    "contentType": "application/json",
+    "graphqlQuery": "",
+    "codeExamples": [],
+    "_id": "682fcc4a79530e3cd0d67ced"
+  },
+  "responses": [
+    {
+      "name": "200",
+      "status": "OK",
+      "body": [
+        {
+          "name": "id",
+          "description": "Unique identifier for the user",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "uuid",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "username",
+          "description": "User's chosen username",
+          "isRequired": true,
+          "value": "john.doe",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "john.doe",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "email",
+          "description": "User's email address",
+          "isRequired": true,
+          "value": "john.doe@example.com",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "email",
+            "example": "john.doe@example.com",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "firstName",
+          "description": "User's first name",
+          "isRequired": true,
+          "value": "John",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "John",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "lastName",
+          "description": "User's last name",
+          "isRequired": true,
+          "value": "Doe",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Doe",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "roles",
+          "description": "Roles assigned to the user",
+          "isRequired": true,
+          "value": "admin",
+          "valueType": "array",
+          "items": [
+            {
+              "name": "0",
+              "description": "",
+              "isRequired": false,
+              "value": "employee",
+              "valueType": "string",
+              "items": [],
+              "options": {
+                "enumValue": [
+                  {
+                    "value": "admin"
+                  },
+                  {
+                    "value": "employer"
+                  },
+                  {
+                    "value": "employee"
+                  },
+                  {
+                    "value": "partner"
+                  }
+                ],
+                "xml": {
+                  "prefix": null
+                }
+              }
+            }
+          ],
+          "options": {
+            "enumValue": [
+              {
+                "value": "admin"
+              },
+              {
+                "value": "employer"
+              },
+              {
+                "value": "employee"
+              },
+              {
+                "value": "partner"
+              }
+            ],
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "createdAt",
+          "description": "Timestamp when the user was created",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "date-time",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "updatedAt",
+          "description": "Timestamp when the user was last updated",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "date-time",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 200,
+      "description": "User updated successfully",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Bad Request",
+      "status": "Bad Request",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "400",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Bad Request.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Missing required field: username.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 400,
+      "description": "Invalid request payload or parameters.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Unauthorized",
+      "status": "Unauthorized",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "401",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Unauthorized.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Invalid access token.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 401,
+      "description": "Authentication required or failed.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Forbidden",
+      "status": "Forbidden",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "403",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Forbidden.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "User does not have write access to plans.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 403,
+      "description": "The authenticated user does not have the necessary permissions.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Not Found",
+      "status": "Not Found",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "404",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Resource not found.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "User with ID 123 not found.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 404,
+      "description": "The specified resource was not found.",
+      "contentType": "application/json"
+    }
+  ],
+  "showBaseUrl": false,
+  "showLanguageBox": false,
+  "showRequestDescription": true,
+  "showResponseDescription": true,
+  "errorCodes": [],
+  "statusCodes": [],
+  "dataExample": [],
+  "endpointSummary": []
+}

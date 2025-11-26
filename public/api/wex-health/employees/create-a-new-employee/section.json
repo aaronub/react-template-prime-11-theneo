@@ -1,0 +1,464 @@
+{
+  "endpoints": {
+    "method": "post",
+    "path": "/employees"
+  },
+  "request": {
+    "query": [],
+    "body": [
+      {
+        "name": "userId",
+        "description": "ID of the associated user account",
+        "isRequired": true,
+        "value": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "uuid",
+          "example": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "employerId",
+        "description": "ID of the employer this employee belongs to",
+        "isRequired": true,
+        "value": "fedcba98-7654-3210-fedc-ba9876543210",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "uuid",
+          "example": "fedcba98-7654-3210-fedc-ba9876543210",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "employeeIdNumber",
+        "description": "Internal employee ID number (e.g., payroll ID)",
+        "isRequired": true,
+        "value": "EMP-00124",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "example": "EMP-00124",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "hireDate",
+        "description": "Date the employee was hired",
+        "isRequired": true,
+        "value": "2021-03-01",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "date",
+          "example": "2021-03-01",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "jobTitle",
+        "description": "Employee's job title",
+        "isRequired": true,
+        "value": "Product Manager",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "example": "Product Manager",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "department",
+        "description": "Employee's department",
+        "isRequired": false,
+        "value": "Product",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "example": "Product",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "status",
+        "description": "Employee's current employment status",
+        "isRequired": true,
+        "value": "Active",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "enumValue": [
+            {
+              "value": "Active"
+            },
+            {
+              "value": "On Leave"
+            },
+            {
+              "value": "Terminated"
+            }
+          ],
+          "example": "Active",
+          "xml": {
+            "prefix": null
+          }
+        }
+      }
+    ],
+    "header": [],
+    "path": [],
+    "contentType": "application/json",
+    "graphqlQuery": "",
+    "codeExamples": [],
+    "_id": "682fcc4a79530e3cd0d67da8"
+  },
+  "responses": [
+    {
+      "name": "201",
+      "status": "Created",
+      "body": [
+        {
+          "name": "id",
+          "description": "Unique identifier for the employee record",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "uuid",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "userId",
+          "description": "ID of the associated user account",
+          "isRequired": true,
+          "value": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "uuid",
+            "example": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "employerId",
+          "description": "ID of the employer this employee belongs to",
+          "isRequired": true,
+          "value": "fedcba98-7654-3210-fedc-ba9876543210",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "uuid",
+            "example": "fedcba98-7654-3210-fedc-ba9876543210",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "employeeIdNumber",
+          "description": "Internal employee ID number (e.g., payroll ID)",
+          "isRequired": true,
+          "value": "EMP-00123",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "EMP-00123",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "hireDate",
+          "description": "Date the employee was hired",
+          "isRequired": true,
+          "value": "2020-01-15",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "date",
+            "example": "2020-01-15",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "jobTitle",
+          "description": "Employee's job title",
+          "isRequired": true,
+          "value": "Software Engineer",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Software Engineer",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "department",
+          "description": "Employee's department",
+          "isRequired": false,
+          "value": "Engineering",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Engineering",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "status",
+          "description": "Employee's current employment status",
+          "isRequired": true,
+          "value": "Active",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "enumValue": [
+              {
+                "value": "Active"
+              },
+              {
+                "value": "On Leave"
+              },
+              {
+                "value": "Terminated"
+              }
+            ],
+            "example": "Active",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "createdAt",
+          "description": "Timestamp when the employee record was created",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "date-time",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "updatedAt",
+          "description": "Timestamp when the employee record was last updated",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "date-time",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 201,
+      "description": "Employee created successfully",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Bad Request",
+      "status": "Bad Request",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "400",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Bad Request.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Missing required field: username.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 400,
+      "description": "Invalid request payload or parameters.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Unauthorized",
+      "status": "Unauthorized",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "401",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Unauthorized.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Invalid access token.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 401,
+      "description": "Authentication required or failed.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Forbidden",
+      "status": "Forbidden",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "403",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Forbidden.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "User does not have write access to plans.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 403,
+      "description": "The authenticated user does not have the necessary permissions.",
+      "contentType": "application/json"
+    }
+  ],
+  "showBaseUrl": false,
+  "showLanguageBox": false,
+  "showRequestDescription": true,
+  "showResponseDescription": true,
+  "errorCodes": [],
+  "statusCodes": [],
+  "dataExample": [],
+  "endpointSummary": []
+}

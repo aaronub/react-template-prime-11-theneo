@@ -1,0 +1,580 @@
+{
+  "endpoints": {
+    "method": "post",
+    "path": "/claims"
+  },
+  "request": {
+    "query": [],
+    "body": [
+      {
+        "name": "employeeId",
+        "description": "ID of the employee who submitted the claim",
+        "isRequired": true,
+        "value": "12345678-abcd-efgh-ijkl-mnopqrstuvwx",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "uuid",
+          "example": "12345678-abcd-efgh-ijkl-mnopqrstuvwx",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "planId",
+        "description": "ID of the plan the claim is against",
+        "isRequired": true,
+        "value": "abcdef12-3456-7890-abcd-ef1234567890",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "uuid",
+          "example": "abcdef12-3456-7890-abcd-ef1234567890",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "claimDate",
+        "description": "Date the claim was submitted",
+        "isRequired": true,
+        "value": "2024-03-05",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "date",
+          "example": "2024-03-05",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "serviceDate",
+        "description": "Date the service was rendered",
+        "isRequired": true,
+        "value": "2024-03-01",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "format": "date",
+          "example": "2024-03-01",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "provider",
+        "description": "Name of the healthcare provider",
+        "isRequired": true,
+        "value": "City Hospital",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "example": "City Hospital",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "amountRequested",
+        "description": "Total amount requested for the claim",
+        "isRequired": true,
+        "value": "1500",
+        "valueType": "number",
+        "items": [],
+        "options": {
+          "format": "float",
+          "example": "1500",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "status",
+        "description": "Current status of the claim",
+        "isRequired": true,
+        "value": "Submitted",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "enumValue": [
+            {
+              "value": "Submitted"
+            },
+            {
+              "value": "Approved"
+            },
+            {
+              "value": "Denied"
+            },
+            {
+              "value": "Paid"
+            },
+            {
+              "value": "Processing"
+            }
+          ],
+          "example": "Submitted",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "diagnosisCode",
+        "description": "ICD-10 diagnosis code",
+        "isRequired": false,
+        "value": "J02.9",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "example": "J02.9",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "procedureCode",
+        "description": "CPT procedure code",
+        "isRequired": false,
+        "value": "87491",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "example": "87491",
+          "xml": {
+            "prefix": null
+          }
+        }
+      },
+      {
+        "name": "notes",
+        "description": "Any additional notes about the claim",
+        "isRequired": false,
+        "value": "",
+        "valueType": "string",
+        "items": [],
+        "options": {
+          "nullable": true,
+          "xml": {
+            "prefix": null
+          }
+        }
+      }
+    ],
+    "header": [],
+    "path": [],
+    "contentType": "application/json",
+    "graphqlQuery": "",
+    "codeExamples": [],
+    "_id": "682fcc4a79530e3cd0d67f38"
+  },
+  "responses": [
+    {
+      "name": "201",
+      "status": "Created",
+      "body": [
+        {
+          "name": "id",
+          "description": "Unique identifier for the claim",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "uuid",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "employeeId",
+          "description": "ID of the employee who submitted the claim",
+          "isRequired": true,
+          "value": "12345678-abcd-efgh-ijkl-mnopqrstuvwx",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "uuid",
+            "example": "12345678-abcd-efgh-ijkl-mnopqrstuvwx",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "planId",
+          "description": "ID of the plan the claim is against",
+          "isRequired": true,
+          "value": "abcdef12-3456-7890-abcd-ef1234567890",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "uuid",
+            "example": "abcdef12-3456-7890-abcd-ef1234567890",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "claimDate",
+          "description": "Date the claim was submitted",
+          "isRequired": true,
+          "value": "2024-02-10",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "date",
+            "example": "2024-02-10",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "serviceDate",
+          "description": "Date the service was rendered",
+          "isRequired": true,
+          "value": "2024-02-01",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "date",
+            "example": "2024-02-01",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "provider",
+          "description": "Name of the healthcare provider",
+          "isRequired": true,
+          "value": "Dr. Smith's Clinic",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Dr. Smith's Clinic",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "amountRequested",
+          "description": "Total amount requested for the claim",
+          "isRequired": true,
+          "value": "250.5",
+          "valueType": "number",
+          "items": [],
+          "options": {
+            "format": "float",
+            "example": "250.5",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "amountPaid",
+          "description": "Amount paid by the plan (if processed)",
+          "isRequired": false,
+          "value": "200",
+          "valueType": "number",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "format": "float",
+            "example": "200",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "status",
+          "description": "Current status of the claim",
+          "isRequired": true,
+          "value": "Processing",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "enumValue": [
+              {
+                "value": "Submitted"
+              },
+              {
+                "value": "Approved"
+              },
+              {
+                "value": "Denied"
+              },
+              {
+                "value": "Paid"
+              },
+              {
+                "value": "Processing"
+              }
+            ],
+            "example": "Processing",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "diagnosisCode",
+          "description": "ICD-10 diagnosis code",
+          "isRequired": false,
+          "value": "R10.9",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "R10.9",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "procedureCode",
+          "description": "CPT procedure code",
+          "isRequired": false,
+          "value": "99213",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "99213",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "notes",
+          "description": "Any additional notes about the claim",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "createdAt",
+          "description": "Timestamp when the claim was created",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "date-time",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "updatedAt",
+          "description": "Timestamp when the claim was last updated",
+          "isRequired": false,
+          "value": "",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "format": "date-time",
+            "readWriteReadOnly": "readOnly",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 201,
+      "description": "Claim created successfully",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Bad Request",
+      "status": "Bad Request",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "400",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Bad Request.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Missing required field: username.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 400,
+      "description": "Invalid request payload or parameters.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Unauthorized",
+      "status": "Unauthorized",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "401",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Unauthorized.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "Invalid access token.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 401,
+      "description": "Authentication required or failed.",
+      "contentType": "application/json"
+    },
+    {
+      "name": "Forbidden",
+      "status": "Forbidden",
+      "body": [
+        {
+          "name": "code",
+          "description": "HTTP status code",
+          "isRequired": false,
+          "value": "403",
+          "valueType": "integer",
+          "items": [],
+          "options": {
+            "format": "int32",
+            "example": "400",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "message",
+          "description": "A human-readable error message",
+          "isRequired": false,
+          "value": "Forbidden.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "example": "Invalid input provided.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        },
+        {
+          "name": "details",
+          "description": "More specific error details",
+          "isRequired": false,
+          "value": "User does not have write access to plans.",
+          "valueType": "string",
+          "items": [],
+          "options": {
+            "nullable": true,
+            "example": "The \"email\" field is required.",
+            "xml": {
+              "prefix": null
+            }
+          }
+        }
+      ],
+      "statusCode": 403,
+      "description": "The authenticated user does not have the necessary permissions.",
+      "contentType": "application/json"
+    }
+  ],
+  "showBaseUrl": false,
+  "showLanguageBox": false,
+  "showRequestDescription": true,
+  "showResponseDescription": true,
+  "errorCodes": [],
+  "statusCodes": [],
+  "dataExample": [],
+  "endpointSummary": []
+}
