@@ -32,8 +32,36 @@ interface TheneoData {
 
 function App() {
   const [projectName, setProjectName] = useState<string | null>(null);
+  const [lastExportTime, setLastExportTime] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState<string>('');
   const [sections, setSections] = useState<TheneoSection[]>([]);
+
+  // Function to convert UTC to EST and format
+  const formatToEST = (utcDateString: string): string => {
+    const date = new Date(utcDateString);
+    
+    // Format date part: "November 26, 2025"
+    const dateFormatter = new Intl.DateTimeFormat('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'America/New_York'
+    });
+    
+    // Format time part: "11:06:02 AM"
+    const timeFormatter = new Intl.DateTimeFormat('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+      timeZone: 'America/New_York'
+    });
+    
+    const formattedDate = dateFormatter.format(date);
+    const formattedTime = timeFormatter.format(date);
+    
+    return `${formattedDate} — ${formattedTime} EST`;
+  };
 
   const handleLoadTheneoJson = async () => {
     try {
@@ -41,6 +69,7 @@ function App() {
       const data: TheneoData = await response.json();
       console.log('Theneo JSON Data:', data);
       setProjectName(data.name);
+      setLastExportTime(data.lastExport ? formatToEST(data.lastExport) : null);
       setSections(data.sections || []);
     } catch (error) {
       console.error('Error loading theneo.json:', error);
@@ -60,10 +89,15 @@ function App() {
         </h1>
         
         {projectName && (
-          <div className="mb-6 text-center">
+          <div className="mb-6 text-center space-y-2">
             <p className="text-xl text-gray-700">
               <span className="font-semibold">Project Name:</span> {projectName}
             </p>
+            {lastExportTime && (
+              <p className="text-sm text-gray-600">
+                <span className="font-semibold">Last Export Time:</span> {lastExportTime}
+              </p>
+            )}
           </div>
         )}
         
